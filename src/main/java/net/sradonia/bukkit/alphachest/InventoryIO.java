@@ -26,6 +26,7 @@ public class InventoryIO {
 	 * @throws IOException
 	 *         if the file could not be read
 	 */
+	@Deprecated
 	public static Inventory loadFromTextfile(File file) throws IOException {
 		final Inventory inventory = Bukkit.getServer().createInventory(null, 6 * 9);
 
@@ -66,7 +67,7 @@ public class InventoryIO {
 	 *         if the file could not be parsed
 	 */
 	public static Inventory loadFromYaml(File file) throws IOException, InvalidConfigurationException {
-		YamlConfiguration yaml = new Utf8YamlConfiguration();
+		YamlConfiguration yaml = new YamlConfiguration();
 		yaml.load(file);
 
 		int inventorySize = yaml.getInt("size", 6 * 9);
@@ -95,7 +96,7 @@ public class InventoryIO {
 	 *         if the file could not be written
 	 */
 	public static void saveToYaml(Inventory inventory, File file) throws IOException {
-		YamlConfiguration yaml = new Utf8YamlConfiguration();
+		YamlConfiguration yaml = new YamlConfiguration();
 
 		int inventorySize = inventory.getSize();
 		yaml.set("size", inventorySize);
